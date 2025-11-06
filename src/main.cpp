@@ -1,14 +1,9 @@
 #include <Arduino.h>
 #include <BleKeyboard.h>
 
-/* TODO add mute */
-#define PLAY_PAUSE_PIN GPIO_NUM_27
-#define REW_PIN GPIO_NUM_26
-#define FF_PIN GPIO_NUM_32
-#define VOL_DOWN_PIN GPIO_NUM_33
-#define VOL_UP_PIN GPIO_NUM_25
+#include "../config.h"
 
-#define DEBOUNCE_DELAY_MS 200
+/* TODO add mute */
 
 BleKeyboard bleKeyboard;
 

@@ -1,0 +1,9 @@
+#include <Arduino.h>
+
+#define PLAY_PAUSE_PIN GPIO_NUM_27
+#define REW_PIN GPIO_NUM_26
+#define FF_PIN GPIO_NUM_32
+#define VOL_DOWN_PIN GPIO_NUM_33
+#define VOL_UP_PIN GPIO_NUM_25
+
+#define DEBOUNCE_DELAY_MS 200
