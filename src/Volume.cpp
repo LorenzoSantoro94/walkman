@@ -12,16 +12,28 @@ class Volume {
     Volume(BleKeyboard* k): keyboard(k) {}
 
     void updateValue() {
+      int steps;
       int newValue = analogRead(VOL_ANALOG_PIN);
+      int diff = newValue - value;
 
-      if (newValue == value) {
+      if (diff == 0) {
         return;
       }
 
-      int diff = newValue - value;
-      int steps = std::ceil(diff / stepSize);
+      // When at volume limits, make sure to go all the way
+      switch (newValue) {
+        case 0:
+          steps = -VOL_STEPS;
+          break;
+        case 4095:
+          steps = VOL_STEPS;
+          break;
+        default:
+          steps = std::ceil(diff / stepSize);
+      }
+
       const uint8_t* key = (steps > 0) ? KEY_MEDIA_VOLUME_UP : KEY_MEDIA_VOLUME_DOWN;
-      
+
       if (steps != 0) {
         /*
           Only update when steps are made. 
