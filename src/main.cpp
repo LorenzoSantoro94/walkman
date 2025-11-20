@@ -1,11 +1,13 @@
 #include <Arduino.h>
 #include <BleKeyboard.h>
 
+#include "Volume.cpp"
 #include "../config.h"
 
 /* TODO add mute */
 
 BleKeyboard bleKeyboard;
+Volume volumeManager(&bleKeyboard);
 
 void setup() {
   Serial.begin(921600);
@@ -47,10 +49,10 @@ void handleButtons() {
   delay(100);
 }
 
-void loop()
-{
+void loop() {
   if (bleKeyboard.isConnected()) {
     handleButtons();
+    volumeManager.updateValue();
     delay(50);
   } else {
     // Idle delay

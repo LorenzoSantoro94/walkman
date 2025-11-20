@@ -7,3 +7,4 @@
 #define VOL_UP_PIN GPIO_NUM_25
 
 #define DEBOUNCE_DELAY_MS 200
+#define VOL_STEPS 30
